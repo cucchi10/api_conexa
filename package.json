@@ -1,0 +1,8 @@
+{
+  "scripts": {
+  "pre-test-auth": "cd auth && npm i",
+  "pre-test-business": "cd business && npm i",
+  "test-auth": "cd auth && npm test",
+  "test-business": "cd business && npm test"
+  }
+}
