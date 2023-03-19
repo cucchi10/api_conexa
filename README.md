@@ -115,4 +115,4 @@ http://localhost:3002/user (GET)
 * npm run test-auth para ejecutar tests sobre el modulo AUTH
 * npm run test-business para ejectuar tests sobre el modulo BUSINESS
 
-![1](./1.jpg)
+![1](./test.jpg)
