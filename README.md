@@ -14,7 +14,7 @@
 * Clonar el Respositorio.
 * Usar el comando `docker-compose up`, esperar que termine de levantar los servicios correspondientes.
 
-## Respuesta de las API AUTH
+## Respuesta de la API AUTH
 
 ```
 
@@ -86,7 +86,7 @@ http://localhost:3001/auth/register (POST)
 
 ```
 
-## Respuesta de las API BUSINESS
+## Respuesta de la API BUSINESS
 ```
 
 http://localhost:3002/user (GET)
