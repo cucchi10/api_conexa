@@ -91,6 +91,7 @@ http://localhost:3001/auth/register (POST)
 
 http://localhost:3002/user (GET)
 * Params : page: Number , per_page: Number, email: String, search: String,
+* Headers: Authorization: Bearer {token}
 * Description: No se puede acceder,
 * Response:
   {
