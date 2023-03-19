@@ -6,7 +6,6 @@
 * BUSINESS - Backend-end: Node.js + Express + TypeScript
 * Base de datos: MongoDB
 * Cache: Redis
-* Test: Jest
 
 
 ## Instrucciones de instalación y ejecución
@@ -15,15 +14,15 @@
 * Clonar el Respositorio.
 * Usar el comando `docker-compose up`, esperar que termine de levantar los servicios correspondientes.
 
-## Respuesta de la API AUTH
+## Respuesta de las API AUTH
 
 ```
 
 http://localhost:3001/user (GET)
 * Params : page: Number , per_page: Number, search: String, email: String,
-* Hearders: Authorization: Bearer {token}
+* Headers: Authorization: Bearer {token}
 * Description: Devuelve una lista de usuarios de forma paginada, permite usar search como buscador.
-                Si se envia un email devuelve exactamente ese User
+                Si se envía un email devuelve exactamente ese User
 * Response:
   {
     "code": Number,
@@ -87,11 +86,12 @@ http://localhost:3001/auth/register (POST)
 
 ```
 
-## Respuesta de la API BUSINESS
+## Respuesta de las API BUSINESS
 ```
 
 http://localhost:3002/user (GET)
 * Params : page: Number , per_page: Number, email: String, search: String,
+* Headers: Authorization: Bearer {token}
 * Description: No se puede acceder,
 * Response:
   {
@@ -111,9 +111,9 @@ http://localhost:3002/user (GET)
 ```
 
 ## TEST
-* Se hicieron varios test unitarios a varios utils de los 2 modulos: AUTH - BUSINESS
+* Se hicieron varios test unitarios a varios utils de los 2 módulos: AUTH - BUSINESS
 * Ejecutar npm run pre-test-auth y npm run pre-test-business para instalar dependencias
-* npm run test-auth para ejecutar tests sobre el modulo AUTH
-* npm run test-business para ejectuar tests sobre el modulo BUSINESS
+* npm run test-auth para ejecutar tests sobre el módulo  AUTH
+* npm run test-business para ejecutar tests sobre el módulo  BUSINESS
 
 ![1](./test.jpg)
