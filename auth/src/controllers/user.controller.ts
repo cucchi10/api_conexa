@@ -2,20 +2,25 @@ import { Request, Response, NextFunction } from 'express';
 import cacheController from '../services/cache/cacheController';
 import { getUsers } from '../services/user.service';
 import { isCacheValid, validateDataUser } from '../utils/validations.handle';
-import { defaultPerPage, defaultpage } from '../utils/constants'
+import { defaultpage, PerPage } from '../utils/constants'
 import { CustomError } from '../utils/customError.handle';
 import { UserPaginationQuery } from '../interfaces/customPaginate.interface';
 
 const gets = async (req: Request, res: Response, next: NextFunction) => {
   try {
-
     const { token } = req.body
+
+    const perPage = (Object.values(PerPage).includes(Number(req.query.per_page))
+      ? Number(req.query.per_page)
+      : PerPage.TEN)
+
     const paramsQuery: UserPaginationQuery = {
       email: req.query.email?.toString().toLowerCase() || '',
       search: req.query.search?.toString().toLowerCase() || '',
       page: Number(req.query.page) || defaultpage,
-      per_page: Number(req.query.per_page) || defaultPerPage
+      per_page: perPage
     }
+
     if (!paramsQuery.email) {
       validateDataUser({ email: paramsQuery.email })
     }

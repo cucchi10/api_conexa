@@ -1,4 +1,5 @@
 import { UserSafety } from "./user.interface";
+import { PerPage } from '../utils/constants'
 
 
 export interface PaginatedApi {
@@ -20,6 +21,6 @@ export interface PaginatedResponse {
 export interface UserPaginationQuery {
   email: string;
   page: number;
-  per_page: number;
+  per_page: PerPage;
   search: string;
 }
