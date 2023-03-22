@@ -6,6 +6,7 @@
 * BUSINESS - Backend-end: Node.js + Express + TypeScript
 * Base de datos: MongoDB
 * Cache: Redis
+* Test: Jest
 
 
 ## Instrucciones de instalación y ejecución
