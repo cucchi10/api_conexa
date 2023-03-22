@@ -20,8 +20,8 @@ const gets = async (req: Request, res: Response, next: NextFunction) => {
       validateDataUser({ email: paramsQuery.email })
     }
     if (!paramsQuery.email && !paramsQuery.search) {
-      let cacheUsers = await cacheController.getUsers()
-      if (isCacheValid(cacheUsers, paramsQuery.page)) {
+      let cacheUsers = await cacheController.getUsers(paramsQuery)
+      if (isCacheValid(cacheUsers, { page: paramsQuery.page, per_page: paramsQuery.per_page })) {
         return res.status(cacheUsers?.code || 200).send(cacheUsers).end();
       }
     }
@@ -30,7 +30,7 @@ const gets = async (req: Request, res: Response, next: NextFunction) => {
     if (!response) throw new CustomError(`Error searching for users`, 400)
 
     if (!paramsQuery.email && !paramsQuery.search) {
-      await cacheController.setUsers(response)
+      await cacheController.setUsers(paramsQuery, response)
     }
 
     return res.status(response.code).send(response).end()

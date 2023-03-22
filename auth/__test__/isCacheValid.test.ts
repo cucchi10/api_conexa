@@ -19,7 +19,8 @@ describe('Utils', () => {
         },
       };
       const page = 2;
-      const result = isCacheValid(cacheUsers, page);
+      const per_page = 10;
+      const result = isCacheValid(cacheUsers, { page, per_page });
       expect(result).toBe(true);
     });
 
@@ -39,14 +40,16 @@ describe('Utils', () => {
         },
       };
       const page = 2;
-      const result = isCacheValid(cacheUsers, page);
+      const per_page = 10;
+      const result = isCacheValid(cacheUsers, { page, per_page });
       expect(result).toBe(false);
     });
 
     it('Se espera un false si es cache es null', () => {
       const cacheUsers: PaginatedResponse | null = null;
       const page = 2;
-      const result = isCacheValid(cacheUsers, page);
+      const per_page = 10;
+      const result = isCacheValid(cacheUsers, { page, per_page });
       expect(result).toBe(false);
     });
   });

@@ -34,7 +34,6 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
         ...userData
       }
     }
-
     await cacheController.delUsers()
 
     return getResponseCustom(res, 200, user)

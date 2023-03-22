@@ -3,7 +3,7 @@ import { Validator } from 'validator.ts/Validator';
 import { UserValidations } from "../interfaces/user.interface";
 import { ValidationErrorInterface } from "validator.ts/ValidationErrorInterface";
 import { newUser } from "./user.handle";
-import { PaginatedResponse } from "../interfaces/customPaginate.interface";
+import { PaginatedResponse, UserPaginationQuery } from "../interfaces/customPaginate.interface";
 
 function formatErrors(errors: ValidationErrorInterface[]): string {
   const errorMessages = errors.map((error) => `${error.property}: ${error.errorMessage || error.errorName}`).join(', ');
@@ -26,12 +26,10 @@ export function validateDataUser(data: UserValidations): void {
   }
 }
 
-export function isCacheValid(cacheUsers: PaginatedResponse | null, page: number): boolean {
+export function isCacheValid(cacheUsers: PaginatedResponse | null, { page, per_page }: Partial<UserPaginationQuery>): boolean {
   const isValid = (
-    cacheUsers &&
-    cacheUsers.data &&
-    cacheUsers.data.current_page &&
-    cacheUsers.data.current_page === page
+    cacheUsers?.data.current_page === page &&
+    cacheUsers?.data.per_page === per_page
   );
   return isValid ? true : false
 }
